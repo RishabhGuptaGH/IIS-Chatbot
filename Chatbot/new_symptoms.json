@@ -1,0 +1,191 @@
+{
+  "dermatology_symptoms": [
+    {
+      "category": "Skin Dryness and Dehydration",
+      "followup_questions": [
+        "How long have you had dry skin?",
+        "Can you describe the dryness? Is it localized or widespread?",
+        "How severe is the dryness? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "dryness", "dry skin", "skin feeling dry", "parched skin",
+        "flakiness", "flaky skin", "skin shedding", "peeling skin",
+        "scaliness", "scaly skin", "rough texture", "dry and scaly skin",
+        "cracks", "cracked skin", "split skin", "skin fissures",
+        "peeling fingertips", "skin peeling off", "excessive dryness", "extremely dry patches"
+      ]
+    },
+    {
+      "category": "Skin Oiliness and Greasiness",
+      "followup_questions": [
+        "How long have you had oily skin?",
+        "Where is the oiliness most noticeable?",
+        "How severe is the oiliness? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "oiliness", "oily skin", "greasy skin", "shiny appearance"
+      ]
+    },
+    {
+      "category": "Skin Sensitivity and Irritation",
+      "followup_questions": [
+        "How long have you had sensitive skin?",
+        "What triggers the irritation?",
+        "How severe is the irritation? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "sensitivity", "sensitive skin", "skin irritation", "skin reacting",
+        "irritation", "irritated skin", "skin sensitivity", "skin discomfort",
+        "burning sensation", "skin burns", "hot feeling", "skin feels inflamed",
+        "stinging sensation", "skin stinging", "sharp skin pain", "skin discomfort"
+      ]
+    },
+    {
+      "category": "Skin Redness and Inflammation",
+      "followup_questions": [
+        "How long have you had redness?",
+        "Is the redness accompanied by swelling or warmth?",
+        "How severe is the redness? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "redness", "flushed skin", "blotchy appearance", "skin turning red",
+        "warm rash", "hot patches", "skin feels hot", "rash with warmth",
+        "spreading redness", "rash expanding", "growing skin rash", "skin discoloration spreading",
+        "purplish rash", "discolored patches", "skin inflammation", "red streaks on skin"
+      ]
+    },
+    {
+      "category": "Skin Discoloration",
+      "followup_questions": [
+        "How long have you noticed discoloration?",
+        "Is the discoloration darker, lighter, or a different color?",
+        "How severe is the discoloration? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "paleness", "pale skin", "light complexion", "whitish appearance",
+        "yellowish tint", "yellow skin", "skin discoloration", "skin looks yellow"
+      ]
+    },
+    {
+      "category": "Skin Tightness and Swelling",
+      "followup_questions": [
+        "How long have you had tight or swollen skin?",
+        "Does the tightness or swelling come and go?",
+        "How severe is the tightness or swelling? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "tight feeling", "tight skin", "stretched feeling", "skin pulling sensation",
+        "swelling", "puffy skin", "skin enlargement", "swollen patches"
+      ]
+    },
+    {
+      "category": "Skin Thinning and Fragility",
+      "followup_questions": [
+        "How long have you noticed thinning skin?",
+        "Does your skin bruise or tear easily?",
+        "How severe is the thinning? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "thinning skin", "thin appearance", "delicate skin", "fragile skin"
+      ]
+    },
+    {
+      "category": "Skin Bumps and Raised Areas",
+      "followup_questions": [
+        "How long have you had bumps or raised areas?",
+        "Are the bumps itchy, painful, or fluid-filled?",
+        "How severe are the bumps? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "bumpiness", "bumpy skin", "lumpy skin", "small raised areas",
+        "raised skin patches", "bumpy skin", "uneven texture", "rash with raised areas",
+        "red spots on skin", "tiny red bumps", "skin with dots", "small skin marks",
+        "bumpy skin areas", "uneven skin texture", "raised skin bumps", "irregular skin rash",
+        "tiny rash spots", "small skin rash", "rash with dots", "speckled rash"
+      ]
+    },
+    {
+      "category": "Itching and Scratching",
+      "followup_questions": [
+        "How long have you been itching?",
+        "Is the itching constant or does it come and go?",
+        "How severe is the itching? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "itchiness", "itchy skin", "skin scratching sensation", "skin feels irritated",
+        "itching", "itchy skin", "persistent itching", "skin feels scratchy",
+        "scalp itching", "itchy scalp", "head itch", "scalp irritation",
+        "eyelid itching", "itchy eyelids", "eye irritation", "eyelid discomfort",
+        "scratch marks", "skin scratches", "skin damage", "visible scratch lines",
+        "nighttime itchiness", "itching at night", "nocturnal itch", "sleep disturbance due to itching",
+        "chronic itching", "long-term itching", "frequent scratching", "uncontrollable itch"
+      ]
+    },
+    {
+      "category": "Skin Rashes and Patches",
+      "followup_questions": [
+        "How long have you had the rash?",
+        "Is the rash itchy, scaly, or painful?",
+        "How severe is the rash? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "rashes", "patchy rash", "red blotches",
+        "itchy areas", "itchy patches", "rash causing itching", "irritated skin",
+        "scaly areas", "scaly rash", "dry flaky areas", "rough scaly skin",
+        "rough patches", "coarse rash", "patchy rough skin", "skin with rough texture",
+        "hives", "welts on skin", "itchy welts", "raised itchy patches"
+      ]
+    },
+    {
+      "category": "Hair Symptoms",
+      "followup_questions": [
+        "How long have you had hair issues?",
+        "Is the hair loss patchy or all over?",
+        "How severe is the hair issue? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "hair thinning", "bald patches", "hair loss", "receding hairline",
+        "dry hair", "oily hair", "brittle hair", "split ends",
+        "dandruff","hairfall"
+      ]
+    },
+    {
+      "category": "Nail Symptoms",
+      "followup_questions": [
+        "How long have you had nail changes?",
+        "Are the nails discolored, brittle, or thickened?",
+        "How severe are the nail changes? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "nail discoloration", "yellow nails", "green nails", "blue nails",
+        "nail pitting", "nail ridges", "brittle nails", "fragile nails",
+        "nail separation", "onycholysis", "nail fungus", "ingrown nails",
+        "nail peeling", "weak nails", "chipping nails"
+      ]
+    },
+    {
+      "category": "Tingling and Crawling Sensations",
+      "followup_questions": [
+        "How long have you had tingling or crawling sensations?",
+        "Is the sensation constant or intermittent?",
+        "How severe is the sensation? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "tingling sensation", "skin tingling",
+        "crawling sensation", "skin feels like crawling", "prickly feeling", "skin feels prickly"
+      ]
+    },
+    {
+      "category": "Blistering and Hardened Skin",
+      "followup_questions": [
+        "How long have you had blisters or hardened skin?",
+        "Are the blisters painful or filled with fluid?",
+        "How severe are the blisters or hardened skin? Mild, moderate, or severe?"
+      ],
+      "symptoms": [
+        "blistering", "blisters on skin", "fluid-filled bumps", "raised blisters",
+        "hard skin", "hardened patches", "thick skin", "toughened skin"
+      ]
+    }
+  ]
+}
