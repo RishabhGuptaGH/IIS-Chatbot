@@ -4,8 +4,8 @@
       "category": "Skin Dryness and Dehydration",
       "followup_questions": [
         "How long have you had dry skin?",
-        "Can you describe the dryness? Is it localized or widespread?",
-        "How severe is the dryness? Mild, moderate, or severe?"
+        "How severe is the dryness? (Mild, moderate, severe)",
+        "What other symptoms do you have? (Flakiness, cracking, rough texture, etc.)"
       ],
       "symptoms": [
         "dryness", "dry skin", "skin feeling dry", "parched skin",
@@ -19,33 +19,33 @@
       "category": "Skin Oiliness and Greasiness",
       "followup_questions": [
         "How long have you had oily skin?",
-        "Where is the oiliness most noticeable?",
-        "How severe is the oiliness? Mild, moderate, or severe?"
+        "How severe is the oiliness? (Mild, moderate, severe)",
+        "What issues are associated with the oiliness? (Acne, enlarged pores, greasy texture, etc.)"
       ],
       "symptoms": [
-        "oiliness", "oily skin", "greasy skin", "shiny appearance"
+        "oiliness", "oily skin", "greasy skin", "shiny appearance","Enlarged Pores","Frequent Breakouts","Greasy Texture","Makeup Slippage","Dull or Uneven Skin Tone","Thickened Skin"
       ]
     },
     {
       "category": "Skin Sensitivity and Irritation",
       "followup_questions": [
         "How long have you had sensitive skin?",
-        "What triggers the irritation?",
-        "How severe is the irritation? Mild, moderate, or severe?"
+        "How severe is the irritation? (Mild, moderate, severe)",
+        "What type of irritation do you experience? (Burning, stinging, redness, etc.)"
       ],
       "symptoms": [
         "sensitivity", "sensitive skin", "skin irritation", "skin reacting",
         "irritation", "irritated skin", "skin sensitivity", "skin discomfort",
         "burning sensation", "skin burns", "hot feeling", "skin feels inflamed",
-        "stinging sensation", "skin stinging", "sharp skin pain", "skin discomfort"
+        "stinging sensation", "skin stinging", "sharp skin pain", "skin discomfort","Visible Blood Vessels","Heat Sensitivity","Changes in Texture","Peeling","Tightness","Swelling","Rash Formation","Dry Patches"
       ]
     },
     {
       "category": "Skin Redness and Inflammation",
       "followup_questions": [
         "How long have you had redness?",
-        "Is the redness accompanied by swelling or warmth?",
-        "How severe is the redness? Mild, moderate, or severe?"
+        "How severe is the redness? (Mild, moderate, severe)",
+        "What kind of redness do you have? (Blotchy, warm rash, spreading redness, etc.)"
       ],
       "symptoms": [
         "redness", "flushed skin", "blotchy appearance", "skin turning red",
@@ -58,20 +58,29 @@
       "category": "Skin Discoloration",
       "followup_questions": [
         "How long have you noticed discoloration?",
-        "Is the discoloration darker, lighter, or a different color?",
-        "How severe is the discoloration? Mild, moderate, or severe?"
+        "How severe is the discoloration? (Mild, moderate, severe)",
+        "What type of discoloration do you have? (Dark spots, uneven skin tone, pale patches, etc.)"
       ],
       "symptoms": [
         "paleness", "pale skin", "light complexion", "whitish appearance",
-        "yellowish tint", "yellow skin", "skin discoloration", "skin looks yellow"
+        "yellowish tint", "yellow skin", "skin discoloration", "skin looks yellow","Dark Spots"
+        ,"Uneven Skin Tone"
+        ,"Redness"
+        ,"Brown Patches"
+        ,"Blue or Green Tint"
+        ,"Freckles"
+        ,"Moles"
+        ,"Blotchy Skin"
+        ,"Post-inflammatory Hyperpigmentation"
+        ,"Age Spots"
       ]
     },
     {
       "category": "Skin Tightness and Swelling",
       "followup_questions": [
         "How long have you had tight or swollen skin?",
-        "Does the tightness or swelling come and go?",
-        "How severe is the tightness or swelling? Mild, moderate, or severe?"
+        "How severe is the tightness or swelling? (Mild, moderate, severe)",
+        "What other symptoms are present? (Puffiness, stretched feeling, swollen patches, etc.)"
       ],
       "symptoms": [
         "tight feeling", "tight skin", "stretched feeling", "skin pulling sensation",
@@ -82,8 +91,8 @@
       "category": "Skin Thinning and Fragility",
       "followup_questions": [
         "How long have you noticed thinning skin?",
-        "Does your skin bruise or tear easily?",
-        "How severe is the thinning? Mild, moderate, or severe?"
+        "How severe is the thinning? (Mild, moderate, severe)",
+        "What other symptoms do you have? (Easy bruising, delicate skin, slow healing, etc.)"
       ],
       "symptoms": [
         "thinning skin", "thin appearance", "delicate skin", "fragile skin"
@@ -93,8 +102,8 @@
       "category": "Skin Bumps and Raised Areas",
       "followup_questions": [
         "How long have you had bumps or raised areas?",
-        "Are the bumps itchy, painful, or fluid-filled?",
-        "How severe are the bumps? Mild, moderate, or severe?"
+        "How severe are the bumps? (Mild, moderate, severe)",
+        "What do the bumps look like? (Red spots, tiny rash, raised skin patches, etc.)"
       ],
       "symptoms": [
         "bumpiness", "bumpy skin", "lumpy skin", "small raised areas",
@@ -108,8 +117,8 @@
       "category": "Itching and Scratching",
       "followup_questions": [
         "How long have you been itching?",
-        "Is the itching constant or does it come and go?",
-        "How severe is the itching? Mild, moderate, or severe?"
+        "How severe is the itching? (Mild, moderate, severe)",
+        "Where do you feel the most itching? (Scalp, eyelids, arms, whole body, etc.)"
       ],
       "symptoms": [
         "itchiness", "itchy skin", "skin scratching sensation", "skin feels irritated",
@@ -125,11 +134,11 @@
       "category": "Skin Rashes and Patches",
       "followup_questions": [
         "How long have you had the rash?",
-        "Is the rash itchy, scaly, or painful?",
-        "How severe is the rash? Mild, moderate, or severe?"
+        "How severe is the rash? (Mild, moderate, severe)",
+        "What type of rash do you have? (Itchy, scaly, painful, etc.)"
       ],
       "symptoms": [
-        "rashes", "patchy rash", "red blotches",
+        "rashes", "patchy rash", "red blotches","allergy",
         "itchy areas", "itchy patches", "rash causing itching", "irritated skin",
         "scaly areas", "scaly rash", "dry flaky areas", "rough scaly skin",
         "rough patches", "coarse rash", "patchy rough skin", "skin with rough texture",
@@ -140,51 +149,89 @@
       "category": "Hair Symptoms",
       "followup_questions": [
         "How long have you had hair issues?",
-        "Is the hair loss patchy or all over?",
-        "How severe is the hair issue? Mild, moderate, or severe?"
+        "How severe is the hair issue? (Mild, moderate, severe)",
+        "What specific hair problem are you facing? (Thinning, dandruff, split ends, etc.)"
       ],
       "symptoms": [
         "hair thinning", "bald patches", "hair loss", "receding hairline",
-        "dry hair", "oily hair", "brittle hair", "split ends",
-        "dandruff","hairfall"
+        "dry hair", "oily hair", "brittle hair", "split ends","hairloss",
+        "dandruff","hairfall","Flaky Scalp","hair fall",
+        "Itchy Scalp"
+        ,"Flat or Limp Hair"
+        ,"Unusual Hair Texture"
+        ,"Frizzy Hair"
+        ,"Tangled Hair"
+        ,"Greasy Scalp"
+        ,"Hair Breakage"
+        ,"Loss of Shine"
+        ,"Scalp Irritation"
+        ,"Stiff or Stagnant Hair Growth"
+        ,"Weak Hair"
+        ,"Uneven Hair Growth"
+        ,"Dull Hair"
+        ,"Unmanageable Hair"
+
       ]
     },
     {
       "category": "Nail Symptoms",
       "followup_questions": [
         "How long have you had nail changes?",
-        "Are the nails discolored, brittle, or thickened?",
-        "How severe are the nail changes? Mild, moderate, or severe?"
+        "How severe are the nail changes? (Mild, moderate, severe)",
+        "What specific nail issues do you have? (Brittle nails, discoloration, ridges, etc.)"
       ],
       "symptoms": [
         "nail discoloration", "yellow nails", "green nails", "blue nails",
         "nail pitting", "nail ridges", "brittle nails", "fragile nails",
         "nail separation", "onycholysis", "nail fungus", "ingrown nails",
-        "nail peeling", "weak nails", "chipping nails"
+        "nail peeling", "weak nails", "chipping nails","Thickened Nails",
+        "Soft Nails"
+        ,"Nail Splitting"
+        ,"Dull Nails"
+        ,"Cracked Nails"
+        ,"Rough or Uneven Nail Surface"
+        ,"Nail Pain"
+        ,"Nail Swelling"
+        ,"Nail Bending or Curling"
+        ,"Nail Grooves or Lines"
+        ,"Redness Around the Nail"
+        ,"Nail Bleeding"
+        ,"White Spots or Marks on Nails"
+        ,"Deformed Nails"
+        ,"Nail Loss"
       ]
     },
     {
       "category": "Tingling and Crawling Sensations",
       "followup_questions": [
         "How long have you had tingling or crawling sensations?",
-        "Is the sensation constant or intermittent?",
-        "How severe is the sensation? Mild, moderate, or severe?"
+        "How severe is the sensation? (Mild, moderate, severe)",
+        "What type of sensation do you experience? (Pins and needles, numbness, buzzing, etc.)"
       ],
       "symptoms": [
         "tingling sensation", "skin tingling",
-        "crawling sensation", "skin feels like crawling", "prickly feeling", "skin feels prickly"
+        "crawling sensation", "skin feels like crawling", "prickly feeling", "skin feels prickly","Pins and Needles Feeling"
+        ,"Numbness"
+        ,"Itchy Skin Without Rash"
+        ,"Electric Shock-like Sensation"
+        ,"Buzzing Feeling"
+        ,"Skin Feels Like Its Being Touched"
+        ,"Uncontrollable Twitching"
+        ,"Zapping Sensation"
+        ,"Vibration-like Feeling"
+        ,"Skin Fluttering"
       ]
     },
     {
-      "category": "Blistering and Hardened Skin",
+      "category": "blisters or hardened skin",
       "followup_questions": [
         "How long have you had blisters or hardened skin?",
-        "Are the blisters painful or filled with fluid?",
-        "How severe are the blisters or hardened skin? Mild, moderate, or severe?"
+        "How severe is the condition? (Mild, moderate, severe)",
+        "What other symptoms do you have? (Fluid-filled blisters, thickened skin, painful spots, etc.)"
       ],
       "symptoms": [
         "blistering", "blisters on skin", "fluid-filled bumps", "raised blisters",
-        "hard skin", "hardened patches", "thick skin", "toughened skin"
+        "hard skin", "hardened patches", "thick skin", "toughened skin","Swollen Bumps","Puffy Skin", "Tight Skin", "Rough","Raised Areas", "Lumps Beneath the Skin","Scaly Texture", "Calloused Skin", "Cracked Skin", "Dry", "Tough Areas","Skin Lesions", "Skin Bumps with Fluid", "Skin Thickening", "Painful Skin Spots", "Skin Peeling Around Bumps", "Hard", "Watery Pockets"
       ]
     }
   ]
