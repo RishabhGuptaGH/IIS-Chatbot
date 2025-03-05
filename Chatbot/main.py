@@ -25,7 +25,7 @@ def verify_symptoms(possibleSymptoms, all_symptoms):
             verifiedSymptoms.append([currentCategory, symptom])
     return verifiedSymptoms
 
-def ask_followup_questions(engine, verifiedSymptoms, content):
+def ask_followup_questions(engine, verifiedSymptoms, content, mode):
     replies = [
         "Thank you for sharing this detail. It helps me understand your situation better.",
         "Got it! This information is valuable for assessing your symptoms.",
@@ -35,58 +35,84 @@ def ask_followup_questions(engine, verifiedSymptoms, content):
     for symptomStorage in verifiedSymptoms:
         category = symptomStorage[0][0]
         questionDict = {}
-        speak(engine, f"Please answer the following regarding {symptomStorage[1]}")
+        response_prompt = f"Please answer the following regarding {symptomStorage[1]}"
+        if mode == "voice":
+            speak(engine, response_prompt)
+        else:
+            print(response_prompt)
         
         for categories in content["dermatology_symptoms"]:
             if categories["category"] == category:
                 for i, question in enumerate(categories["followup_questions"]):
-                    speak(engine, question)
-                    MyText = listen()
+                    if mode == "voice":
+                        speak(engine, question)
+                        MyText = listen()
+                    else:
+                        MyText = input(question + " ")
                     
                     if i == 0 and MyText:
-                        speak(engine, f"We're sorry to hear that you have been experiencing it for {MyText}. Please know that you’re not alone.")
+                        response = f"We're sorry to hear that you have been experiencing it for {MyText}. Please know that you’re not alone."
                     elif MyText:
-                        speak(engine, replies[i % len(replies)])
+                        response = replies[i % len(replies)]
                     else:
-                        speak(engine, "Thank you for your response. If you'd like to elaborate further, let me know.")
+                        response = "Thank you for your response. If you'd like to elaborate further, let me know."
+                    
+                    if mode == "voice":
+                        speak(engine, response)
+                    else:
+                        print(response)
                     
                     questionDict[question] = MyText
                 symptomStorage.append(questionDict)
     return verifiedSymptoms
 
-def get_user_details(engine):
+def get_user_details(engine, mode):
     user_details = {}
 
-    speak(engine, "May I know your name?")
-    user_details["Name"] = listen().title()
-    print(f"Name detected as: {user_details["Name"]}")
-
-    speak(engine, "How old are you?")
-    user_details["Age"] = listen()
-    print(f"Age detected as: {user_details["Age"]}")
-
-    speak(engine, "What is your gender?")
-    user_details["Gender"] = listen()
-    print(f"Gender detected as: {user_details["Gender"]}")
-
-    speak(engine, "Lastly, can you please provide your phone number?")
-    user_details["Phone_number"] = listen()
-    print(f"Phone Number detected as: {user_details["Phone_number"]}")
-
+    prompts = [
+        ("May I know your name?", "Name"),
+        ("How old are you?", "Age"),
+        ("What is your gender?", "Gender"),
+        ("Lastly, can you please provide your phone number?", "Phone_number")
+    ]
+    
+    for prompt, key in prompts:
+        if mode == "voice":
+            speak(engine, prompt)
+            response = listen()
+        else:
+            response = input(prompt + " ")
+        user_details[key] = response.title() if key == "Name" else response
+        print(f"{key} detected as: {user_details[key]}")
+    
     return user_details
 
 def main():
     engine = initialize_engine()
-    print("Welcome to voice-based chatbot")
-    speak(engine, "Hello! I am a Dermatological Healthcare chatbot. Before we proceed, I need to collect some basic details.")
-
-    user_details = get_user_details(engine)
-
-    speak(engine, "Now, how may I assist you with your dermatological concerns today?")
+    print("Welcome to the dermatological healthcare chatbot!")
     
-    user_input = listen()
+    mode = input("Would you like to communicate via text or voice? (Enter 'text' or 'voice'): ").strip().lower()
+    while mode not in ["text", "voice"]:
+        mode = input("Invalid input. Please enter 'text' or 'voice': ").strip().lower()
+    
+    if mode == "voice":
+        speak(engine, "Hello! I am a Dermatological Healthcare chatbot. Before we proceed, I need to collect some basic details.")
+    else:
+        print("Hello! I am a Dermatological Healthcare chatbot. Before we proceed, I need to collect some basic details.")
+    
+    user_details = get_user_details(engine, mode)
+    
+    if mode == "voice":
+        speak(engine, "Now, how may I assist you with your dermatological concerns today?")
+        user_input = listen()
+    else:
+        user_input = input("Now, how may I assist you with your dermatological concerns today? ")
+    
     if not user_input:
-        speak(engine, "No input detected. Please try again.")
+        if mode == "voice":
+            speak(engine, "No input detected. Please try again.")
+        else:
+            print("No input detected. Please try again.")
         return
     
     possibleSymptoms = normalizer.text_normalizer(user_input)
@@ -95,18 +121,31 @@ def main():
     verifiedSymptoms = verify_symptoms(possibleSymptoms, all_symptoms)
     
     if not verifiedSymptoms:
-        speak(engine, "No symptoms detected. Please try rephrasing your input or providing more details.")
+        if mode == "voice":
+            speak(engine, "No symptoms detected. Please try rephrasing your input or providing more details.")
+        else:
+            print("No symptoms detected. Please try rephrasing your input or providing more details.")
         return
     
-    speak(engine, "The identified symptoms are")
+    if mode == "voice":
+        speak(engine, "The identified symptoms are:")
+    else:
+        print("The identified symptoms are:")
+    
     for observedSymptoms in verifiedSymptoms:
-        speak(engine, observedSymptoms[1])
+        if mode == "voice":
+            speak(engine, observedSymptoms[1])
+        else:
+            print(observedSymptoms[1])
     
-    verifiedSymptoms = ask_followup_questions(engine, verifiedSymptoms, content)
+    verifiedSymptoms = ask_followup_questions(engine, verifiedSymptoms, content, mode)
     
-    speak(engine, "Your information has been recorded and PDF has been generated. Have a great day!")
-
-    pdf.final_report(user_details,verifiedSymptoms)
+    if mode == "voice":
+        speak(engine, "Your information has been recorded and a PDF has been generated. Have a great day!")
+    else:
+        print("Your information has been recorded and a PDF has been generated. Have a great day!")
+    
+    pdf.final_report(user_details, verifiedSymptoms)
     
 if __name__ == "__main__":
     main()
