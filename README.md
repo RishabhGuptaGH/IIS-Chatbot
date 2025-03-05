@@ -1,1 +1,1 @@
-# IIS-Chatbot
+This project is aimed to create a department specific Healthcare Chatbot. Various further features which include PDF report generation, data encryption, voice based communication, etc are also to be implemented.
