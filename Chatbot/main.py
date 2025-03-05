@@ -70,12 +70,27 @@ def get_user_details(engine, mode):
     user_details = {}
 
     prompts = [
-        ("May I know your name?", "Name"),
         ("How old are you?", "Age"),
         ("What is your gender?", "Gender"),
         ("Lastly, can you please provide your phone number?", "Phone_number")
     ]
     
+    while True:
+        if mode == "voice":
+            speak(engine, "May I know your name?")
+            response = listen()
+        else:
+            response = input("May I know your name? ")
+        
+        if response.strip():
+            user_details["Name"] = response.title()
+            break
+        else:
+            if mode == "voice":
+                speak(engine, "I didn't catch that. Could you please repeat your name?")
+            else:
+                print("Name is mandatory. Please enter your name.")
+                
     for prompt, key in prompts:
         if mode == "voice":
             speak(engine, prompt)
