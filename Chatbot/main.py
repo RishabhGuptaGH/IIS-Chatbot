@@ -2,6 +2,7 @@ import normalizer
 import json
 from voice import *
 import pdf
+import DBsetup
 
 def load_symptoms_data(file_path):
     with open(file_path) as file:
@@ -161,6 +162,11 @@ def main():
         print("Your information has been recorded and a PDF has been generated. Have a great day!")
     
     pdf.final_report(user_details, verifiedSymptoms)
+    
+    DBsetup.setup_database(user_details, verifiedSymptoms)
+
+    
+
     
 if __name__ == "__main__":
     main()
