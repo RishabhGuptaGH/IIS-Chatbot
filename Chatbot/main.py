@@ -3,6 +3,7 @@ import json
 from voice import *
 import pdf
 import DBsetup
+import translator
 
 def load_symptoms_data(file_path):
     with open(file_path) as file:
@@ -26,7 +27,7 @@ def verify_symptoms(possibleSymptoms, all_symptoms):
             verifiedSymptoms.append([currentCategory, symptom])
     return verifiedSymptoms
 
-def ask_followup_questions(engine, verifiedSymptoms, content, mode):
+def ask_followup_questions(engine, verifiedSymptoms, content, mode, target_lang):
     replies = [
         "Thank you for sharing this detail. It helps me understand your situation better.",
         "Got it! This information is valuable for assessing your symptoms.",
@@ -36,7 +37,7 @@ def ask_followup_questions(engine, verifiedSymptoms, content, mode):
     for symptomStorage in verifiedSymptoms:
         category = symptomStorage[0][0]
         questionDict = {}
-        response_prompt = f"Please answer the following regarding {symptomStorage[1]}"
+        response_prompt = translator.translate(f"Please answer the following regarding {symptomStorage[1]}", target_lang)
         if mode == "voice":
             speak(engine, response_prompt)
         else:
@@ -45,18 +46,19 @@ def ask_followup_questions(engine, verifiedSymptoms, content, mode):
         for categories in content["dermatology_symptoms"]:
             if categories["category"] == category:
                 for i, question in enumerate(categories["followup_questions"]):
+                    translated_question = translator.translate(question, target_lang)
                     if mode == "voice":
-                        speak(engine, question)
+                        speak(engine, translated_question)
                         MyText = listen()
                     else:
-                        MyText = input(question + " ")
+                        MyText = input(translated_question + " ")
                     
                     if i == 0 and MyText:
-                        response = f"We're sorry to hear that you have been experiencing it for {MyText}. Please know that you’re not alone."
+                        response = translator.translate(f"We're sorry to hear that you have been experiencing it for {MyText}. Please know that you’re not alone.", target_lang)
                     elif MyText:
-                        response = replies[i % len(replies)]
+                        response = translator.translate(replies[i % len(replies)], target_lang)
                     else:
-                        response = "Thank you for your response. If you'd like to elaborate further, let me know."
+                        response = translator.translate("Thank you for your response. If you'd like to elaborate further, let me know.", target_lang)
                     
                     if mode == "voice":
                         speak(engine, response)
@@ -67,7 +69,7 @@ def ask_followup_questions(engine, verifiedSymptoms, content, mode):
                 symptomStorage.append(questionDict)
     return verifiedSymptoms
 
-def get_user_details(engine, mode):
+def get_user_details(engine, mode, target_lang):
     user_details = {}
 
     prompts = [
@@ -78,26 +80,26 @@ def get_user_details(engine, mode):
     
     while True:
         if mode == "voice":
-            speak(engine, "May I know your name?")
+            speak(engine, translator.translate("May I know your name?", target_lang))
             response = listen()
         else:
-            response = input("May I know your name? ")
+            response = input(translator.translate("May I know your name?", target_lang) + " ")
         
         if response.strip():
             user_details["Name"] = response.title()
             break
         else:
             if mode == "voice":
-                speak(engine, "I didn't catch that. Could you please repeat your name?")
+                speak(engine, translator.translate("I didn't catch that. Could you please repeat your name?", target_lang))
             else:
-                print("Name is mandatory. Please enter your name.")
-                
+                print(translator.translate("Name is mandatory. Please enter your name.", target_lang))
+    
     for prompt, key in prompts:
         if mode == "voice":
-            speak(engine, prompt)
+            speak(engine, translator.translate(prompt, target_lang))
             response = listen()
         else:
-            response = input(prompt + " ")
+            response = input(translator.translate(prompt, target_lang) + " ")
         user_details[key] = response.title() if key == "Name" else response
         print(f"{key} detected as: {user_details[key]}")
     
@@ -110,25 +112,34 @@ def main():
     mode = input("Would you like to communicate via text or voice? (Enter 'text' or 'voice'): ").strip().lower()
     while mode not in ["text", "voice"]:
         mode = input("Invalid input. Please enter 'text' or 'voice': ").strip().lower()
-    
+
+    user_lang = input("Enter the language in which you want chatbot to be used: ")
+    if user_lang not in translator.languages:
+        print("Unsupported language. Defaulting to English.")
+        user_lang = "English"
+    target_lang = user_lang
+
+    welcome_message = translator.translate("Welcome to the dermatological healthcare chatbot!", target_lang)
     if mode == "voice":
-        speak(engine, "Hello! I am a Dermatological Healthcare chatbot. Before we proceed, I need to collect some basic details.")
+        speak(engine, welcome_message)
     else:
-        print("Hello! I am a Dermatological Healthcare chatbot. Before we proceed, I need to collect some basic details.")
+        print(welcome_message)
     
-    user_details = get_user_details(engine, mode)
+    user_details = get_user_details(engine, mode, target_lang)
     
+    assistance_prompt = translator.translate("Now, how may I assist you with your dermatological concerns today?", target_lang)
     if mode == "voice":
-        speak(engine, "Now, how may I assist you with your dermatological concerns today?")
+        speak(engine, assistance_prompt)
         user_input = listen()
     else:
-        user_input = input("Now, how may I assist you with your dermatological concerns today? ")
+        user_input = input(assistance_prompt + " ")
     
     if not user_input:
+        error_message = translator.translate("No input detected. Please try again.", target_lang)
         if mode == "voice":
-            speak(engine, "No input detected. Please try again.")
+            speak(engine, error_message)
         else:
-            print("No input detected. Please try again.")
+            print(error_message)
         return
     
     possibleSymptoms = normalizer.text_normalizer(user_input)
@@ -137,36 +148,20 @@ def main():
     verifiedSymptoms = verify_symptoms(possibleSymptoms, all_symptoms)
     
     if not verifiedSymptoms:
-        if mode == "voice":
-            speak(engine, "No symptoms detected. Please try rephrasing your input or providing more details.")
-        else:
-            print("No symptoms detected. Please try rephrasing your input or providing more details.")
+        print(translator.translate("No symptoms detected. Please try rephrasing your input or providing more details.", target_lang))
         return
     
-    if mode == "voice":
-        speak(engine, "The identified symptoms are:")
-    else:
-        print("The identified symptoms are:")
-    
+    print(translator.translate("The identified symptoms are:", target_lang))
     for observedSymptoms in verifiedSymptoms:
-        if mode == "voice":
-            speak(engine, observedSymptoms[1])
-        else:
-            print(observedSymptoms[1])
+        print(translator.translate(observedSymptoms[1], target_lang))
     
-    verifiedSymptoms = ask_followup_questions(engine, verifiedSymptoms, content, mode)
+    verifiedSymptoms = ask_followup_questions(engine, verifiedSymptoms, content, mode, target_lang)
     
-    if mode == "voice":
-        speak(engine, "Your information has been recorded and a PDF has been generated. Have a great day!")
-    else:
-        print("Your information has been recorded and a PDF has been generated. Have a great day!")
+    closing_message = translator.translate("Your information has been recorded and a PDF has been generated. Have a great day!", target_lang)
+    print(closing_message)
     
     pdf.final_report(user_details, verifiedSymptoms)
-    
     DBsetup.setup_database(user_details, verifiedSymptoms)
-
-    
-
     
 if __name__ == "__main__":
     main()
